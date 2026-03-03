@@ -1,8 +1,7 @@
 # foodpanda-cli
 
-CLI for ordering food from foodpanda.ph — designed for AI assistants that don't support MCP.
+CLI for ordering food from foodpanda.ph — designed for AI assistants.
 
-All commands output structured JSON to stdout.
 
 ## Setup
 
@@ -28,7 +27,6 @@ foodpanda-cli login
 
 Opens a browser window to foodpanda.ph. Log in manually — the token is captured automatically and saved to `~/.foodpanda-cli/token.json`.
 
-You can also set `FOODPANDA_SESSION_TOKEN` as an environment variable as a fallback.
 
 ## Commands
 
