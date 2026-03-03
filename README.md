@@ -12,13 +12,13 @@ npm install -g foodpanda-cli
 npx foodpanda-cli
 ```
 
-### Environment Variables
+### Set Your Location
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `FOODPANDA_LATITUDE` | Yes | Delivery address latitude |
-| `FOODPANDA_LONGITUDE` | Yes | Delivery address longitude |
-| `FOODPANDA_SESSION_TOKEN` | No | Session token (fallback; use `login` command instead) |
+```bash
+foodpanda-cli location <latitude> <longitude>
+```
+
+Your location is saved to `~/.foodpanda-cli/location.json` and persists across sessions.
 
 ### Login
 
@@ -28,7 +28,16 @@ foodpanda-cli login
 
 Opens a browser window to foodpanda.ph. Log in manually — the token is captured automatically and saved to `~/.foodpanda-cli/token.json`.
 
+You can also set `FOODPANDA_SESSION_TOKEN` as an environment variable as a fallback.
+
 ## Commands
+
+### Location
+
+```bash
+# Set delivery location
+foodpanda-cli location 14.5995 120.9842
+```
 
 ### Search & Discovery
 
@@ -81,14 +90,20 @@ foodpanda-cli order --payment payment_on_delivery --instructions "Leave at door"
 This CLI is designed to be invoked by AI assistants as shell commands. All output is JSON.
 
 **Ordering workflow:**
-1. `search` -> find restaurants
-2. `menu` -> browse items
-3. `item` -> check toppings/variations
-4. `add` -> build cart
-5. `preview` -> review order
-6. `order` -> place order (only after user confirmation)
+1. `location` -> set delivery coordinates
+2. `login` -> authenticate
+3. `search` -> find restaurants
+4. `menu` -> browse items
+5. `item` -> check toppings/variations
+6. `add` -> build cart
+7. `preview` -> review order
+8. `order` -> place order (only after user confirmation)
 
 **Limitations:**
 - Only `payment_on_delivery` (Cash on Delivery) works
 - Philippines only (foodpanda.ph)
 - Session tokens expire; use `login` to refresh
+
+## License
+
+[MIT](LICENSE)
